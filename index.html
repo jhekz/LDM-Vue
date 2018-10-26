@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="icon" type="image/png" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuR3k-H8unuYXDNdnpBWwKZP1qqwXFyhHOm5zXiDcV6wqdxEf8">
+	<title>Belajar Vue Js</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script src="js/vue.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+	<div class="container">
+		<div id="databinding">
+			<h1 align="center" class="head">Currency Converter</h1>
+			<hr/>
+			<div class="container">
+				<div class="card">
+					<div class="card-body">
+						<div class="row" style="color: black;">
+							<div class="col">
+								<div class="form-group row">
+									<label class="col-sm-4 col-form-label">Masukkan Nominal</label>
+									<div class="col-sm-8">
+										<input class="form-control" type="number" v-model.number="amount"></input>
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-sm-4 col-form-label">Dari</label>
+									<div class="col-sm-8">
+										<select v-model="convertfrom" class="form-control">
+											<option v-for="(a, index) in currencyfrom"  v-bind:value="a.name">{{a.desc}}</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-sm-4 col-form-label">Ke</label>
+									<div class="col-sm-8">
+										<select v-model="convertto" class="form-control">
+											<option v-for="(a, index) in currencyfrom"  v-bind:value="a.name">{{a.desc}}</option>
+										</select>
+									</div>
+								</div>
+								<p align="right">
+									<button class="btn btn-primary" @click="save">Tambahkan ke History</button>
+								</p>
+							</div>
+							<div class="col">
+								<small align="center">{{amount}} {{convertfrom}} :</small>
+								<h1 align="center">{{finalamount.toFixed(2)}} {{convertto}}</h1>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<hr/>
+			<div class="container">
+				<div class="card">
+					<div class="card-body">
+						<div class="table-responsive">
+							<table class="table table-hover">
+								<thead>
+									<tr>
+										<th scope="col">No</th>
+										<th scope="col">Dari</th>
+										<th scope="col">Ke</th>
+										<th scope="col">Nominal</th>
+										<th scope="col">Hasil</th>
+										<th scope="col">Ditambahkan</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr v-for="(tab, index) in table.slice(0, 5)" v-show="tp == true">
+										<th scope="row">{{index + 1}}</th>
+										<td>{{tab.dari}}</td>
+										<td>{{tab.ke}}</td>
+										<td>{{tab.nominal}}</td>
+										<td>{{tab.hasil}}</td>
+										<td>{{tab.created}}</td>
+									</tr>
+									<tr v-for="(tab, index) in table" v-show="tp == false">
+										<th scope="row">{{index + 1}}</th>
+										<td>{{tab.dari}}</td>
+										<td>{{tab.ke}}</td>
+										<td>{{tab.nominal}}</td>
+										<td>{{tab.hasil}}</td>
+										<td>{{tab.created}}</td>
+									</tr>
+								</tbody>
+							</table>
+							<p align="center">
+								<button type="button" class="btn btn-primary btn-sm btn-block" v-if="table.length > 5" @click="tambah">{{tampil}}</button>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="js/app.js"></script>
+</body>
+</html>
