@@ -7,7 +7,7 @@ var vm = new Vue({
       {name:"EUR", desc:"Euro"},
       {name:"INR", desc:"Indian Rupee"},
       {name:"BHD", desc:"Bahraini Dinar"},
-      {name:"IDR", desc:"Indonesia Rupiah"}
+      {name:"IDR", desc:"Indonesian Rupiah"}
       ],
       convertfrom: "IDR",
       convertto:"USD",
@@ -134,6 +134,9 @@ var vm = new Vue({
          } else {
             this.tampil = 'Tampilkan lebih sedikit'
          }
+      },
+      clear: function () {
+         this.table = []
       }
    }
 });

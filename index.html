@@ -44,6 +44,7 @@
 									</div>
 								</div>
 								<p align="right">
+									<button class="btn btn-danger" @click="clear" v-if="table.length > 0">Kosongkan</button>
 									<button class="btn btn-primary" @click="save">Tambahkan ke History</button>
 								</p>
 							</div>
